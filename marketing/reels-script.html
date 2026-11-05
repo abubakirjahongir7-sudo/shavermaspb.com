@@ -1,0 +1,603 @@
+<title>Shaverma Reels Ssenariysi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Unbounded:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5EBDD;
+    --cream-soft: #FAF3E7;
+    --card: #FFFFFF;
+    --text: #241A12;
+    --text-muted: #8A7A6A;
+    --line: rgba(36, 26, 18, 0.1);
+
+    --accent: #EF5A28;
+    --accent-dark: #D6491C;
+    --accent-soft: #FCE3D6;
+
+    --blue: #4169E1;
+    --blue-dark: #2E4FBF;
+    --blue-soft: #E1E7FA;
+
+    --success: #2FAE4E;
+
+    --font-display: "Oswald", system-ui, sans-serif;
+    --font-heading: "Unbounded", system-ui, sans-serif;
+    --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --cream: #1C140D;
+      --cream-soft: #241B12;
+      --card: #2A2019;
+      --text: #F5EBDD;
+      --text-muted: #B8A996;
+      --line: rgba(245, 235, 221, 0.12);
+      --accent-soft: #4A2B1C;
+      --blue-soft: #22284A;
+      color-scheme: dark;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --cream: #1C140D;
+    --cream-soft: #241B12;
+    --card: #2A2019;
+    --text: #F5EBDD;
+    --text-muted: #B8A996;
+    --line: rgba(245, 235, 221, 0.12);
+    --accent-soft: #4A2B1C;
+    --blue-soft: #22284A;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--text);
+    font-family: var(--font-body);
+    padding: 28px 16px 60px;
+  }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* ---------- Header ---------- */
+
+  .eyebrow {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue);
+  }
+
+  .h1 {
+    margin: 6px 0 4px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(38px, 9vw, 58px);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    transform: scaleX(0.86);
+    transform-origin: left;
+    text-wrap: balance;
+    color: var(--text);
+  }
+
+  .h1 span { color: var(--accent); }
+
+  .subhead {
+    font-size: 14px;
+    color: var(--text-muted);
+    max-width: 52ch;
+    line-height: 1.5;
+    margin: 0 0 22px;
+  }
+
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .meta-chip {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    color: var(--text-muted);
+  }
+
+  /* ---------- Timeline scrubber ---------- */
+
+  .timeline-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 16px 16px 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 12px rgba(36, 26, 18, 0.06);
+  }
+
+  .timeline-label {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .scrubber {
+    display: flex;
+    width: 100%;
+    height: 34px;
+    border-radius: 8px;
+    overflow: hidden;
+    gap: 2px;
+  }
+
+  .scrubber i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: normal;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 12px;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .ticks {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+    font-family: var(--font-body);
+    font-size: 10.5px;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- Scene cards ---------- */
+
+  .scenes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .scene {
+    display: flex;
+    gap: 0;
+    background: var(--card);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(36, 26, 18, 0.05);
+  }
+
+  .scene-rail {
+    flex-shrink: 0;
+    width: 8px;
+  }
+
+  .scene-body {
+    flex: 1;
+    min-width: 0;
+    padding: 14px 16px 16px;
+  }
+
+  .scene-top {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .scene-num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1;
+    color: var(--scene-color, var(--accent));
+    font-variant-numeric: tabular-nums;
+  }
+
+  .scene-time {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .scene-title {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 700;
+    margin-left: auto;
+    color: var(--text);
+  }
+
+  .scene-grid {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 4px 10px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .scene-grid .ico { text-align: center; opacity: 0.75; }
+  .scene-grid .label {
+    font-family: var(--font-heading);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    grid-column: 1 / -1;
+    margin-top: 4px;
+  }
+  .scene-grid .label:first-child { margin-top: 0; }
+
+  .vo {
+    font-style: italic;
+    color: var(--text);
+  }
+
+  .caption-chip {
+    display: inline-block;
+    margin-top: 2px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: var(--scene-soft, var(--accent-soft));
+    color: var(--scene-color, var(--accent-dark));
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 11.5px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- Footer sections ---------- */
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 30px;
+  }
+
+  @media (min-width: 560px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .panel {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 18px 18px 20px;
+    box-shadow: 0 2px 10px rgba(36, 26, 18, 0.05);
+  }
+
+  .panel h2 {
+    margin: 0 0 10px;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .panel ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text);
+  }
+
+  .panel ul li::marker { color: var(--accent); }
+
+  .swatches {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+    flex-wrap: wrap;
+  }
+
+  .swatch {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 4px;
+    font-size: 8.5px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+  }
+
+  .hashtags {
+    margin-top: 10px;
+    font-size: 12.5px;
+    color: var(--blue);
+    line-height: 1.6;
+    word-break: break-word;
+  }
+
+  .total-badge {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    background: var(--blue);
+    color: #fff;
+  }
+
+  .total-badge .n {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .total-badge .t {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0.9;
+  }
+</style>
+
+<div class="wrap">
+
+  <div class="eyebrow">Instagram Reels / TikTok · 9:16</div>
+  <h1 class="h1">VAU<br /><span>SSENARIY</span></h1>
+  <p class="subhead">
+    Shaverma SPB Mini App'ini 60 soniyada namoyish qiluvchi video ssenariysi —
+    ekran yozib olish + ovoz + ekrandagi yozuvlar bilan, boshidan oxirigacha tayyor.
+  </p>
+
+  <div class="meta-row">
+    <span class="meta-chip">⏱ 60 soniya</span>
+    <span class="meta-chip">📱 Vertikal (9:16)</span>
+    <span class="meta-chip">🎬 8 sahna</span>
+    <span class="meta-chip">🔇 Ovozsiz ham tushunarli</span>
+  </div>
+
+  <div class="timeline-card">
+    <div class="timeline-label">Vaqt shkalasi</div>
+    <div class="scrubber">
+      <i style="width:6.7%;background:#EF5A28">1</i>
+      <i style="width:8.3%;background:#D6491C">2</i>
+      <i style="width:11.7%;background:#4169E1">3</i>
+      <i style="width:16.7%;background:#2E4FBF">4</i>
+      <i style="width:13.3%;background:#EF5A28">5</i>
+      <i style="width:13.3%;background:#D6491C">6</i>
+      <i style="width:13.3%;background:#2FAE4E">7</i>
+      <i style="width:16.7%;background:#4169E1">8</i>
+    </div>
+    <div class="ticks">
+      <span>0:00</span><span>0:10</span><span>0:20</span><span>0:30</span>
+      <span>0:40</span><span>0:50</span><span>1:00</span>
+    </div>
+  </div>
+
+  <div class="scenes">
+
+    <!-- Scene 1 -->
+    <div class="scene">
+      <div class="scene-rail" style="background:#EF5A28"></div>
+      <div class="scene-body">
+        <div class="scene-top">
+          <span class="scene-num" style="--scene-color:#EF5A28">01</span>
+          <span class="scene-time">0:00 – 0:04</span>
+          <span class="scene-title">ILINTIRISH</span>
+        </div>
+        <div class="scene-grid">
+          <span class="label">Vizual</span>
+          <span class="ico">🎥</span>
+          <span>Telefon ekrani: App Store ochilyapti, "Shaverma" deb qidirilyapti, natijalar chiqmayapti / yuklash aylanasi charchatadi.</span>
+          <span class="label">Ovoz (VO)</span>
+          <span class="ico">🗣</span>
+          <span class="vo">"Shaverma buyurtma qilish uchun yana bitta ilova yuklaysizmi?"</span>
+        </div>
+        <div class="caption-chip" style="--scene-color:#D6491C;--scene-soft:#FCE3D6">ILOVA KERAKMI?! 🤔</div>
+      </div>
+    </div>
+
+    <!-- Scene 2 -->
+    <div class="scene">
+      <div class="scene-rail" style="background:#D6491C"></div>
+      <div class="scene-body">
+        <div class="scene-top">
+          <span class="scene-num" style="--scene-color:#D6491C">02</span>
+          <span class="scene-time">0:04 – 0:09</span>
+          <span class="scene-title">YECHIM</span>
+        </div>
+        <div class="scene-grid">
+          <span class="label">Vizual</span>
+          <span class="ico">💬</span>
+          <span>Katta qizil X. Keyin ekran Telegram'ga almashadi: Shaverma SPB qidirilib, ochiladi.</span>
+          <span class="label">Ovoz (VO)</span>
+          <span class="ico">🗣</span>
+          <span class="vo">"Yo'q! Shaverma SPB — to'g'ridan-to'g'ri Telegram ichida ishlaydi."</span>
+        </div>
+        <div class="caption-chip" style="--scene-color:#D6491C;--scene-soft:#FCE3D6">0 MB YUKLASH ❌</div>
+      </div>
+    </div>
+
+    <!-- Scene 3 -->
+    <div class="scene">
+      <div class="scene-rail" style="background:#4169E1"></div>
+      <div class="scene-body">
+        <div class="scene-top">
+          <span class="scene-num" style="--scene-color:#4169E1">03</span>
+          <span class="scene-time">0:09 – 0:16</span>
+          <span class="scene-title">VAU-MOMENT ⭐</span>
+        </div>
+        <div class="scene-grid">
+          <span class="label">Vizual</span>
+          <span class="ico">🐔</span>
+          <span>"Открыть меню" bosiladi → to'liq ekranga super-qahramon tovuq uchib kiradi (splash animatsiya). Bu videoning eng kuchli kadri — sekin motion bilan ko'rsating.</span>
+          <span class="label">Ovoz (VO)</span>
+          <span class="ico">🗣</span>
+          <span class="vo">"Va mana... birinchi taassurot shunday bo'ladi."</span>
+        </div>
+        <div class="caption-chip" style="--scene-color:#2E4FBF;--scene-soft:#E1E7FA">😍 buni kutmagandingiz</div>
+      </div>
+    </div>
+
+    <!-- Scene 4 -->
+    <div class="scene">
+      <div class="scene-rail" style="background:#2E4FBF"></div>
+      <div class="scene-body">
+        <div class="scene-top">
+          <span class="scene-num" style="--scene-color:#2E4FBF">04</span>
+          <span class="scene-time">0:16 – 0:26</span>
+          <span class="scene-title">MENYU + SAVAT</span>
+        </div>
+        <div class="scene-grid">
+          <span class="label">Vizual</span>
+          <span class="ico">🌯</span>
+          <span>Kategoriyalar tez almashadi (Шаверма → Горячее → Закуски). Kartochkaga tegiladi — sal kattalashadi, "+" bosiladi, pastdagi ko'k "Корзина" panели raqam bilan o'sib boradi.</span>
+          <span class="label">Ovoz (VO)</span>
+          <span class="ico">🗣</span>
+          <span class="vo">"Menyuni ko'rasiz, bosasiz — tamom, savatda!"</span>
+        </div>
+        <div class="caption-chip" style="--scene-color:#2E4FBF;--scene-soft:#E1E7FA">1 TEGISH = SAVATDA 🛒</div>
+      </div>
+    </div>
+
+    <!-- Scene 5 -->
+    <div class="scene">
+      <div class="scene-rail" style="background:#EF5A28"></div>
+      <div class="scene-body">
+        <div class="scene-top">
+          <span class="scene-num" style="--scene-color:#EF5A28">05</span>
+          <span class="scene-time">0:26 – 0:34</span>
+          <span class="scene-title">FILIAL TANLASH</span>
+        </div>
+        <div class="scene-grid">
+          <span class="label">Vizual</span>
+          <span class="ico">📍</span>
+          <span>"Изменить" bosiladi — ikkita filial chiqadi (Малый проспект / Пионерская), biri tanlanadi.</span>
+          <span class="label">Ovoz (VO)</span>
+          <span class="ico">🗣</span>
+          <span class="vo">"Sizga qaysi filial yaqin — bir bosishda tanlaysiz."</span>
+        </div>
+        <div class="caption-chip" style="--scene-color:#D6491C;--scene-soft:#FCE3D6">2 FILIAL, 1 TANLOV</div>
+      </div>
+    </div>
+
+    <!-- Scene 6 -->
+    <div class="scene">
+      <div class="scene-rail" style="background:#D6491C"></div>
+      <div class="scene-body">
+        <div class="scene-top">
+          <span class="scene-num" style="--scene-color:#D6491C">06</span>
+          <span class="scene-time">0:34 – 0:42</span>
+          <span class="scene-title">BUYURTMA</span>
+        </div>
+        <div class="scene-grid">
+          <span class="label">Vizual</span>
+          <span class="ico">✅</span>
+          <span>Savat sahifasi → "Заказать" (yashil) bosiladi → tasdiqlash ekrani: "Заказ №N принят, [Ism]! Спасибо за заказ!"</span>
+          <span class="label">Ovoz (VO)</span>
+          <span class="ico">🗣</span>
+          <span class="vo">"Ismingiz bilan iliq tabrik — buyurtma qabul qilindi, 10 soniyada!"</span>
+        </div>
+        <div class="caption-chip" style="--scene-color:#D6491C;--scene-soft:#FCE3D6">✅ TAYYOR!</div>
+      </div>
+    </div>
+
+    <!-- Scene 7 -->
+    <div class="scene">
+      <div class="scene-rail" style="background:#2FAE4E"></div>
+      <div class="scene-body">
+        <div class="scene-top">
+          <span class="scene-num" style="--scene-color:#2FAE4E">07</span>
+          <span class="scene-time">0:42 – 0:50</span>
+          <span class="scene-title">BONUS</span>
+        </div>
+        <div class="scene-grid">
+          <span class="label">Vizual</span>
+          <span class="ico">🎁</span>
+          <span>Ekran ikkiga bo'linadi: chapda mijozda "Бесплатный морс за отзыв" kartasi; o'ngda — kassada yangi buyurtma xabari administratorga kelayapti.</span>
+          <span class="label">Ovoz (VO)</span>
+          <span class="ico">🗣</span>
+          <span class="vo">"Va bonus — sharh qoldiring, bepul mors oling!"</span>
+        </div>
+        <div class="caption-chip" style="--scene-color:#23913E;--scene-soft:#DFF3E5">🎁 BEPUL SOVG'A</div>
+      </div>
+    </div>
+
+    <!-- Scene 8 -->
+    <div class="scene">
+      <div class="scene-rail" style="background:#4169E1"></div>
+      <div class="scene-body">
+        <div class="scene-top">
+          <span class="scene-num" style="--scene-color:#4169E1">08</span>
+          <span class="scene-time">0:50 – 1:00</span>
+          <span class="scene-title">CTA</span>
+        </div>
+        <div class="scene-grid">
+          <span class="label">Vizual</span>
+          <span class="ico">📣</span>
+          <span>"ШАВЕРМА" logotipi katta chiqadi, pastda bot nomi va yuqoriga ishora qiluvchi qo'l/strelka animatsiyasi.</span>
+          <span class="label">Ovoz (VO)</span>
+          <span class="ico">🗣</span>
+          <span class="vo">"Hoziroq sinab ko'ring — havola bio'da!"</span>
+        </div>
+        <div class="caption-chip" style="--scene-color:#2E4FBF;--scene-soft:#E1E7FA">👆 BIO'DAGI HAVOLA</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="total-badge">
+    <span class="t">Umumiy davomiylik</span>
+    <span class="n">60 / 60 soniya</span>
+  </div>
+
+  <div class="footer-grid">
+    <div class="panel">
+      <h2>🎥 Suratga olish maslahati</h2>
+      <ul>
+        <li>Telefon ekranini yozib oling ("Screen Record"), ilovadan foydalanuvchi sifatida o'tib chiqing — real, tayyorlanmagan harakat ko'rinsin.</li>
+        <li>3-sahna (tovuq animatsiyasi) uchun ekranni 2 marta yozib, eng silliq chiqqanini oling.</li>
+        <li>Barcha yozuvlarni (caption chip'lar) videoga qo'shing — Instagram'da ko'pchilik ovozsiz tomosha qiladi.</li>
+        <li>Fon musiqasi: tez, quvnoq trend audio (BPM ~120–130) — sahna almashishlarini urg'uga moslang.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h2>🎨 Brend ranglari</h2>
+      <div class="swatches">
+        <div class="swatch" style="background:#4169E1">Blue</div>
+        <div class="swatch" style="background:#EF5A28">Accent</div>
+        <div class="swatch" style="background:#2FAE4E">Success</div>
+        <div class="swatch" style="background:#241A12">Text</div>
+      </div>
+      <div class="hashtags">
+        #shaverma #шавермаспб #спб #доставкаеды #streetfood #telegram
+      </div>
+    </div>
+  </div>
+
+</div>

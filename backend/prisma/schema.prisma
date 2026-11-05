@@ -1,0 +1,122 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Order {
+  id           Int         @id @default(autoincrement())
+  customerName String      @map("customer_name")
+  phone        String
+  // Mijozning o'z buyurtmasi holatini ko'rishi va push'ga obuna bo'lishi
+  // uchun maxfiy kalit — id ketma-ket bo'lgani uchun faqat id yetarli emas.
+  trackingToken String     @unique @map("tracking_token")
+  items     Json
+  total     Int
+  status    OrderStatus @default(PENDING)
+
+  // Olib ketish (PICKUP, kafeId bilan) yoki yetkazib berish (DELIVERY,
+  // address/latitude/longitude bilan).
+  orderType OrderType @default(PICKUP) @map("order_type")
+  cafeId    String?   @map("cafe_id")
+  address   String?
+  latitude  Float?
+  longitude Float?
+  // Yetkazib berish narxi — `total` ichiga kiradi.
+  deliveryFee Int @default(0) @map("delivery_fee")
+
+  // Karta bilan to'lovda buyurtma adminga faqat PAID bo'lgach ko'rinadi.
+  paymentMethod PaymentMethod @default(CASH) @map("payment_method")
+  paymentStatus PaymentStatus @default(NOT_REQUIRED) @map("payment_status")
+  paymentId     String?       @unique @map("payment_id")
+  paymentUrl    String?       @map("payment_url")
+
+  // Yandex Доставка zayavkasi.
+  courierClaimId String? @map("courier_claim_id")
+  courierStatus  String? @map("courier_status")
+  courierName    String? @map("courier_name")
+
+  createdAt DateTime    @default(now()) @map("created_at")
+  updatedAt DateTime    @updatedAt @map("updated_at")
+
+  customerPushSubscriptions CustomerPushSubscription[]
+
+  @@map("orders")
+}
+
+// PENDING — yangi (hali ko'rilmagan), CONFIRMED — qabul qilindi,
+// READY — tayyor, OUT_FOR_DELIVERY — kuryer yo'lda, DELIVERED — yetkazildi, CANCELLED — bekor qilindi.
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  READY
+  OUT_FOR_DELIVERY
+  DELIVERED
+  CANCELLED
+}
+
+enum PaymentMethod {
+  CASH
+  CARD
+}
+
+enum PaymentStatus {
+  NOT_REQUIRED
+  PENDING
+  PAID
+  CANCELED
+  REFUNDED
+}
+
+enum OrderType {
+  PICKUP
+  DELIVERY
+}
+
+// Stop-list: kafe egasi tugab qolgan mahsulotni shu yerga qo'shadi.
+// Har bir filial (cafeId) o'z alohida stop-listiga ega — bitta filialda
+// tugagan mahsulot ikkinchisida bemalol sotilaveradi.
+// itemId — src/data/menuItems.js/.ts'dagi mahsulot id'si (masalan "klassika-m").
+// cafeId — src/data/cafes.js/.ts'dagi filial id'si (masalan "malyy-57").
+model StoppedItem {
+  cafeId    String   @map("cafe_id")
+  itemId    String   @map("item_id")
+  stoppedAt DateTime @default(now()) @map("stopped_at")
+
+  @@id([cafeId, itemId])
+  @@map("stopped_items")
+}
+
+// Admin telefon/planshetlarining Web Push obunalari. Admin panel PWA
+// sifatida o'rnatilgan bo'lsa, telefon uyquda/ilova yopiq bo'lsa ham
+// yangi buyurtma haqida bildirishnoma shu obuna orqali keladi.
+// cafeId — qurilma qaysi filialga tegishli (faqat o'sha filial buyurtmalari
+// uchun bildirishnoma oladi).
+model PushSubscription {
+  endpoint  String   @id
+  p256dh    String
+  auth      String
+  cafeId    String   @map("cafe_id")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([cafeId])
+  @@map("push_subscriptions")
+}
+
+// Mijoz qurilmasining bitta buyurtmaga bog'langan Web Push obunasi —
+// buyurtma holati o'zgarganda ("Принят", "Готов") bildirishnoma keladi.
+model CustomerPushSubscription {
+  id        Int      @id @default(autoincrement())
+  orderId   Int      @map("order_id")
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  endpoint  String
+  p256dh    String
+  auth      String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@unique([orderId, endpoint])
+  @@map("customer_push_subscriptions")
+}

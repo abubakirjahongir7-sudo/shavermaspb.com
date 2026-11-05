@@ -1,0 +1,18 @@
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 14px;
+  padding: 8px 16px 16px;
+}
+
+/* Menyu sahifasida pastdagi "Корзина" paneli havolalarni yopib qo'ymasligi uchun */
+.withBottomNav {
+  padding-bottom: calc(24px + 76px);
+}
+
+.link {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  text-decoration: underline;
+}

@@ -1,0 +1,51 @@
+.card {
+  background: var(--color-card);
+  border-radius: 14px;
+  padding: 12px;
+  margin: 0 16px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 2px 10px rgba(36, 26, 18, 0.06);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.input {
+  border: 1.5px solid rgba(36, 26, 18, 0.15);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-text);
+  background: var(--color-cream-soft);
+}
+
+.saveBtn {
+  border: none;
+  background: var(--color-accent);
+  color: #fff;
+  border-radius: 10px;
+  padding: 11px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.saveBtn:active {
+  transform: scale(0.98);
+  background: var(--color-accent-dark);
+}
+
+.saveBtn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}

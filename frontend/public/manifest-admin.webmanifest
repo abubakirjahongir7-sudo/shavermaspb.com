@@ -1,0 +1,21 @@
+{
+  "id": "/admin",
+  "name": "Админ · Гражданский пр., 39Б",
+  "short_name": "Админ",
+  "description": "Админ-панель заказов — Shaverma SPB, Гражданский пр., 39Б",
+  "start_url": "/admin",
+  "scope": "/admin",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F5EBDD",
+  "theme_color": "#A30000",
+  "lang": "ru",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  }
+}

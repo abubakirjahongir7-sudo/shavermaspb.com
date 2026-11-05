@@ -1,0 +1,186 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(36, 26, 18, 0.45);
+  display: flex;
+  align-items: flex-end;
+  z-index: 100;
+}
+
+.sheet {
+  width: 100%;
+  max-height: 88dvh;
+  overflow-y: auto;
+  background: var(--color-cream);
+  border-radius: 20px 20px 0 0;
+  padding: 16px 16px calc(16px + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.close {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-card);
+  color: var(--color-text);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  background: var(--color-accent-soft);
+  border-radius: 14px;
+  padding: 4px;
+}
+
+.tab {
+  flex: 1;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.tabDisabled {
+  flex: 1;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  opacity: 0.5;
+  cursor: default;
+}
+
+.soon {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.tabActive {
+  background: #fff;
+  color: var(--color-text);
+  box-shadow: 0 2px 8px rgba(36, 26, 18, 0.1);
+}
+
+.cafeList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cafeCard {
+  text-align: left;
+  border: 1.5px solid rgba(36, 26, 18, 0.1);
+  background: var(--color-card);
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  cursor: pointer;
+}
+
+.cafeCardActive {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+.cafeName {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.cafeLandmark {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.deliveryBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.locateBtn {
+  border: 1.5px dashed var(--color-accent);
+  background: var(--color-accent-soft);
+  color: var(--color-accent-dark);
+  border-radius: 12px;
+  padding: 12px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.locateBtn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.geoError {
+  margin: 0;
+  font-size: 12px;
+  color: #c0392b;
+}
+
+.addressInput {
+  border: 1.5px solid rgba(36, 26, 18, 0.15);
+  border-radius: 12px;
+  padding: 12px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-text);
+  background: var(--color-card);
+  resize: none;
+}
+
+.saveBtn {
+  width: 100%;
+  border: none;
+  border-radius: 16px;
+  background: var(--color-accent);
+  color: #fff;
+  padding: 14px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.saveBtn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

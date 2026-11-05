@@ -1,0 +1,117 @@
+.header {
+  position: relative;
+  /* Qizil bo'yoq, pastki chetida sariq "surtma" chizig'i ko'rinib turadi */
+  background: #A30000 url("/images/header-bg.jpg") center bottom / cover no-repeat;
+  /* Telefonga o'rnatilgan ilovada status-bar (soat, batareya) ostiga kirib
+     qolmasligi uchun tepadan xavfsiz zona qo'shiladi. */
+  padding: calc(18px + env(safe-area-inset-top)) 16px 30px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  border-radius: 0 0 20px 20px;
+  color: var(--color-cream);
+}
+
+.supportBtn {
+  position: absolute;
+  top: calc(env(safe-area-inset-top) + 34px);
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.28);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 1;
+  text-decoration: none;
+  z-index: 1;
+}
+
+.supportBtn:active {
+  transform: scale(0.92);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.logo {
+  margin: 4px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-rubik), var(--font-display), sans-serif;
+  font-weight: 900;
+  line-height: 1;
+  transform: rotate(-4deg);
+}
+
+.logoSecondLine {
+  margin-top: 8px;
+}
+
+.word {
+  display: grid;
+  font-size: 38px;
+  letter-spacing: 0.01em;
+}
+
+.logoSecondLine .word {
+  font-size: 32px;
+}
+
+.word > span {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+}
+
+/* Eng tashqi — sariq kontur */
+.layerOuter {
+  color: #FFC21A;
+  -webkit-text-stroke: 15px #FFC21A;
+  text-shadow: 0 5px 0 #FFC21A;
+}
+
+/* Qora kontur va pastga tushgan "3D" qalinlik */
+.layerStroke {
+  color: #1A0E00;
+  -webkit-text-stroke: 8px #1A0E00;
+  text-shadow: 0 4px 0 #1A0E00;
+}
+
+/* Asosiy rang — tepadan pastga sariqdan to'q sariqqa */
+.layerFill {
+  background: linear-gradient(180deg, #FFE45C 0%, #FFB21E 55%, #F57F00 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Harflarning yuqori qismidagi oq yaltirash */
+.layerShine {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0) 38%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* So'zlar ostidagi multfilmcha "surtma" chiziqlar */
+.swoosh {
+  position: relative;
+  z-index: 1;
+  display: block;
+  height: auto;
+  overflow: visible;
+}
+
+.swooshTop {
+  width: 150px;
+  margin: 2px 40px 0 0;
+}
+
+.swooshBottom {
+  width: 120px;
+  margin: 2px 0 0 70px;
+}

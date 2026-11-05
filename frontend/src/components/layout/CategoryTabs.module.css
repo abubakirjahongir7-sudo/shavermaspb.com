@@ -1,0 +1,72 @@
+/* iPhone Safari sahifani status-bar va manzil satri ostida ham chizadi —
+   sticky panel tepasida bo'sh oraliq qolib, ostidan menyu ko'rinib qolardi.
+   Shu sabab panel tepaga yopishganda (.stuck) uning ustiga fon rangidagi
+   "parda" qo'yiladi; o'rnatilgan ilovada esa panel soat/batareya ostiga
+   kirmasligi uchun xavfsiz zona qo'shiladi. */
+.stickyWrap {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding-top: env(safe-area-inset-top);
+  background: var(--color-cream);
+}
+
+.stuck::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 100vh;
+  background: var(--color-cream);
+  pointer-events: none;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--color-cream);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  border-bottom: 1px solid rgba(36, 26, 18, 0.08);
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  flex-shrink: 0;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 14px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--color-accent-soft);
+  color: var(--color-text);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+.tab:active {
+  transform: scale(0.96);
+}
+
+.active {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.blue {
+  background: var(--color-brand-green-soft);
+  color: var(--color-brand-green-dark);
+}
+
+.blue.active {
+  background: var(--color-brand-green);
+  color: #fff;
+}

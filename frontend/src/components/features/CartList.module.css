@@ -1,0 +1,33 @@
+.section {
+  margin-bottom: 8px;
+  /* Sticky CategoryTabs balandligi bilan bir xil — scrollIntoView shu
+     bo'lim sarlavhasi tugmalar ostida yashiringan holda to'xtamasligi uchun. */
+  scroll-margin-top: 56px;
+}
+
+.sectionTitle {
+  margin: 4px 14px 12px;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding: 0 22px 24px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 14px 24px;
+}
+
+.section:last-child .grid,
+.section:last-child .list {
+  padding-bottom: calc(24px + 76px);
+}

@@ -1,0 +1,245 @@
+.page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-cream);
+  padding-bottom: calc(24px + env(safe-area-inset-bottom));
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: calc(16px + env(safe-area-inset-top)) 16px 8px;
+}
+
+.back {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-card);
+  color: var(--color-text);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(36, 26, 18, 0.08);
+}
+
+.headerTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px 16px 0;
+}
+
+.card {
+  background: var(--color-card);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 2px 10px rgba(36, 26, 18, 0.06);
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.dot {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.done .dot {
+  background: var(--color-success);
+  color: #fff;
+}
+
+.done .stepLabel {
+  color: var(--color-text-muted);
+}
+
+.current .dot {
+  background: var(--color-accent);
+  color: #fff;
+  box-shadow: 0 0 0 5px var(--color-accent-soft);
+}
+
+.current .stepLabel {
+  color: var(--color-text);
+  font-weight: 800;
+}
+
+.todo .dot {
+  background: var(--color-cream);
+  color: var(--color-text-muted);
+}
+
+.todo .stepLabel {
+  color: var(--color-text-muted);
+}
+
+.cancelled {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+}
+
+.cancelledText {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.pushBtn {
+  display: block;
+  text-decoration: none;
+  border: none;
+  border-radius: 16px;
+  background: var(--color-accent);
+  color: #fff;
+  padding: 14px 16px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.pushBtn:active {
+  background: var(--color-accent-dark);
+}
+
+.pushNote {
+  margin: 0;
+  padding: 12px 16px;
+  border-radius: 16px;
+  background: var(--color-accent-soft);
+  color: var(--color-accent-dark);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.where {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.comment {
+  display: block;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-cream);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.menuBtn {
+  border: none;
+  border-radius: 16px;
+  background: var(--color-success);
+  color: #fff;
+  padding: 15px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(47, 174, 78, 0.35);
+}
+
+.menuBtn:active {
+  background: var(--color-success-dark);
+}
+
+.center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.bigIcon {
+  font-size: 48px;
+  line-height: 1;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.muted {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
