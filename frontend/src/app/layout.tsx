@@ -67,6 +67,27 @@ export const viewport: Viewport = {
   themeColor: "#A30000",
 };
 
+// iPhone Safari'dagi sahifa masshtabi (aA) kenglikni kichraytirib, kartalar va
+// matnlarni buzadi. Telefonda shu masshtabni qaytarib, ilovani ekranga to'liq
+// moslaymiz. Sahifa chizilishidan oldin ishlashi uchun <head> ichida turadi.
+const FIT_PHONE_SCRIPT = `(function () {
+  var root = document.documentElement;
+  var isIphone = /iPhone|iPod/.test(navigator.userAgent);
+  function fit() {
+    var w = window.innerWidth;
+    var small = Math.min(screen.width, screen.height);
+    var base = w > window.innerHeight ? Math.max(screen.width, screen.height) : small;
+    var ratio = w / base;
+    // Eski Android brauzerlari screen'ni fizik pikselda beradi, bu masshtab emas.
+    var physical = !isIphone && Math.abs(base / window.devicePixelRatio - w) < 2;
+    var zoomed = small < 500 && !physical && ratio >= 0.4 && ratio < 0.9
+      && window.matchMedia("(pointer: coarse)").matches;
+    root.style.zoom = zoomed ? String(ratio) : "";
+  }
+  fit();
+  window.addEventListener("resize", fit);
+})();`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
@@ -80,6 +101,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             bo'lmasa, iOS "Bosh ekranga qo'shish"dan keyin ham ilovani
             Safari manzil satri bilan ochadi (haqiqiy PWA rejimida emas). */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
+        <script dangerouslySetInnerHTML={{ __html: FIT_PHONE_SCRIPT }} />
       </head>
       <body>
         <PwaRegister />
