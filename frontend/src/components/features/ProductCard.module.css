@@ -2,7 +2,7 @@
   background: var(--color-card);
   /* Header bannerdagi to'q qizil rangdagi ramka */
   border: 2px solid var(--color-brand-red);
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 10px rgba(36, 26, 18, 0.06);
   display: flex;
@@ -48,7 +48,7 @@
 
 .imageWrap {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 3;
   background: var(--color-accent);
   overflow: hidden;
   position: relative;
@@ -65,66 +65,70 @@
 
 .body {
   flex: 1;
-  padding: 8px 9px 10px;
+  padding: 8px 9px 9px;
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
+/* Barcha kartalar bir xil balandlikda bo'lishi uchun nom va hajmga aynan 3 qatorlik joy */
 .nameRow {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 6px;
+  height: 3.75em;
+  font-size: 12px;
+  line-height: 1.25;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 
 .name {
+  display: inline;
   margin: 0;
-  min-width: 0;
   overflow-wrap: break-word;
-  word-break: break-word;
+  hyphens: auto;
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: inherit;
   font-weight: 700;
-  line-height: 1.25;
-  /* Barcha kartalar bir xil balandlikda bo'lishi uchun nomga 3 qatorlik joy */
-  min-height: 3.75em;
   color: var(--color-text);
 }
 
 .footer {
   margin-top: auto;
-  padding-top: 4px;
+  padding-top: 2px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 4px;
+  /* Tugma turi o'zgarganda ham karta balandligi o'zgarmasin */
+  min-height: 32px;
 }
 
 .priceBlock {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 1px;
 }
 
 .weight {
-  min-height: 1.3em;
   font-size: 11px;
+  white-space: nowrap;
   color: var(--color-text-muted);
 }
 
 .price {
   white-space: nowrap;
   font-family: var(--font-display);
-  font-size: 14px;
+  font-size: clamp(14px, 4.4vw, 17px);
   font-weight: 700;
   color: var(--color-text);
 }
 
 .add {
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   border: none;
   background: var(--color-accent);
@@ -147,10 +151,10 @@
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
   background: var(--color-accent-soft);
   border-radius: 20px;
-  padding: 3px;
+  padding: 2px;
 }
 
 .stepBtn {
@@ -176,7 +180,7 @@
 }
 
 .qty {
-  min-width: 14px;
+  min-width: 12px;
   text-align: center;
   font-family: var(--font-display);
   font-weight: 700;

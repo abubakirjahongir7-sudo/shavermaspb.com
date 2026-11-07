@@ -37,12 +37,12 @@ export function ProductCard({ item, quantity, onAdd, onRemove, stopped }: Produc
 
       <div className={styles.body}>
         <div className={styles.nameRow}>
-          <h3 className={styles.name}>{name}</h3>
+          <h3 className={styles.name}>{name}</h3>{" "}
+          <span className={styles.weight}>{weight}</span>
         </div>
 
         <div className={styles.footer}>
           <div className={styles.priceBlock}>
-            <span className={styles.weight}>{weight}</span>
             <span className={styles.price}>{formatPrice(price)}</span>
           </div>
 
