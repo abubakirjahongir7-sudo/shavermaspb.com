@@ -1,46 +1,40 @@
 import type { Metadata, Viewport } from "next";
-import { Unbounded, Inter, Oswald, Rubik } from "next/font/google";
 import { PwaRegister } from "@/components/layout/PwaRegister";
+// Shriftlar npm paketidan olinadi va saytning o'zidan beriladi — build paytida
+// Google Fonts'ga murojaat qilinmaydi (serverdan ulanish ishonchsiz edi).
+// Har bir fayl harf to'plamlarini unicode-range bilan ajratadi — brauzer
+// faqat sahifadagi harflar uchun kerakli qismni yuklaydi.
+import "@fontsource/unbounded/600.css";
+import "@fontsource/unbounded/700.css";
+import "@fontsource/unbounded/800.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
+// "ШАВЕРМА" logotip yozuvi uchun — ultra-condensed Art Deco uslubidagi shrift.
+import "@fontsource/oswald/600.css";
+import "@fontsource/oswald/700.css";
+// Header'dagi "ШАВЕРМА СПБ" multfilm uslubidagi logotip uchun.
+import "@fontsource/rubik/900.css";
 import "@/styles/globals.css";
 
-// Shriftlarni o'zimizning saytimizdan (self-hosted) yuklaymiz — bu Google
-// Fonts'ga tashqi so'rovga qaraganda ancha tezroq va ishonchli. Sekin
-// internetda shrift hali yuklanmagan
-// paytda brauzerning fallback kursiv shrifti bilan qalin kontur/soya
-// birga chalkash ko'rinishga sabab bo'lardi — shuning uchun bu muhim.
-const unbounded = Unbounded({
-  subsets: ["latin", "cyrillic"],
-  weight: ["600", "700", "800"],
-  variable: "--font-unbounded",
-  display: "swap",
-});
-const inter = Inter({
-  subsets: ["latin", "cyrillic"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-inter",
-  display: "swap",
-});
-// "ШАВЕРМА" logotip yozuvi uchun — ultra-condensed, baland, tekis
-// chiziqli Art Deco uslubidagi shrift (Oswald — 1920-30-yillardagi
-// "Alternate Gothic" condensed harflaridan ilhomlangan, to'liq kirill
-// qo'llab-quvvatlaydi).
-const oswald = Oswald({
-  subsets: ["latin", "cyrillic"],
-  weight: ["600", "700"],
-  variable: "--font-oswald",
-  display: "swap",
-});
-// Header'dagi "ШАВЕРМА СПБ" multfilm uslubidagi logotip uchun —
-// qalin, yumaloq burchakli, kirillni to'liq qo'llaydi.
-const rubik = Rubik({
-  subsets: ["latin", "cyrillic"],
-  weight: ["900"],
-  variable: "--font-rubik",
-  display: "swap",
-});
+const SITE_URL = "https://shavermaspb.com";
 
 export const metadata: Metadata = {
-  title: "Shaverma SPB",
+  metadataBase: new URL(SITE_URL),
+  title: "Shaverma SPB — шаверма в Санкт-Петербурге",
+  description:
+    "Шаверма, супы, горячие блюда и напитки. Закажите онлайн и заберите в кафе Shaverma SPB на Гражданском проспекте, 39Б.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: "Shaverma SPB",
+    title: "Shaverma SPB — шаверма в Санкт-Петербурге",
+    description: "Меню и онлайн-заказ — Shaverma SPB, Гражданский пр., 39Б.",
+    locale: "ru_RU",
+    images: [{ url: "/icon-512.png", width: 512, height: 512 }],
+  },
   // PWA: iPhone/Android'da "Bosh ekranga qo'shish" orqali ilova sifatida
   // o'rnatilishi uchun — manifest + apple-specific teglar.
   manifest: "/manifest.webmanifest",
@@ -90,11 +84,7 @@ const FIT_PHONE_SCRIPT = `(function () {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="ru"
-      suppressHydrationWarning
-      className={`${unbounded.variable} ${inter.variable} ${oswald.variable} ${rubik.variable}`}
-    >
+    <html lang="ru" suppressHydrationWarning>
       <head>
         {/* Next.js'ning appleWebApp.capable maydoni negadir shu tegni
             chiqarmayapti — shu sabab qo'lda qo'shildi. Aynan shu teg

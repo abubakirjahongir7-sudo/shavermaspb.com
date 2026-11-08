@@ -22,6 +22,10 @@
   --color-brand-green-dark: #169A3A;
   --color-brand-green-soft: #DCF7E3;
 
+  --font-unbounded: "Unbounded";
+  --font-inter: "Inter";
+  --font-oswald: "Oswald";
+  --font-rubik: "Rubik";
   --font-display: var(--font-unbounded), system-ui, sans-serif;
   --font-body: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
   /* "ШАВЕРМА" logotip so'zi uchun — ultra-condensed Art Deco uslub */
