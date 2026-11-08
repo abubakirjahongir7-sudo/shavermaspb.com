@@ -74,7 +74,8 @@
 /* Barcha kartalar bir xil balandlikda bo'lishi uchun nom va hajmga aynan 3 qatorlik joy */
 .nameRow {
   height: 3.75em;
-  font-size: 12px;
+  /* Kichik telefonda eng uzun nom ham 3 qatorga sig'sin */
+  font-size: clamp(10.5px, 3.3vw, 12px);
   line-height: 1.25;
   display: -webkit-box;
   -webkit-box-orient: vertical;
