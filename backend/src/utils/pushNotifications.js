@@ -11,6 +11,7 @@ import {
   deleteCustomerPushSubscriptionsForOrder,
 } from "../models/CustomerPushSubscription.js";
 import { logger } from "./logger.js";
+import { runInBackground } from "./backgroundTasks.js";
 
 export function isPushEnabled() {
   return Boolean(config.vapidPublicKey && config.vapidPrivateKey);
@@ -65,7 +66,11 @@ export function buildOrderPushPayload(order) {
  * qurilmalariga Web Push yuboradi. Yetkazib berish buyurtmasida filial
  * yo'q — shuning uchun hamma qurilmaga yuboriladi.
  */
-export async function notifyAdminDevicesNewOrder(order) {
+export function notifyAdminDevicesNewOrder(...args) {
+  return runInBackground(notifyAdminDevicesNewOrderNow(...args));
+}
+
+async function notifyAdminDevicesNewOrderNow(order) {
   if (!isPushEnabled()) return;
 
   try {
@@ -109,7 +114,11 @@ export function buildCustomerStatusPayload(order) {
 }
 
 /** Buyurtma holati o'zgarganda — shu buyurtmaga obuna bo'lgan mijoz qurilmalariga push. */
-export async function notifyCustomerOrderStatus(order) {
+export function notifyCustomerOrderStatus(...args) {
+  return runInBackground(notifyCustomerOrderStatusNow(...args));
+}
+
+async function notifyCustomerOrderStatusNow(order) {
   if (!isPushEnabled()) return;
   const payload = buildCustomerStatusPayload(order);
   if (!payload) return;

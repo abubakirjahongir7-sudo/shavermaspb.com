@@ -1,6 +1,22 @@
+# Netlify: Base directory = frontend.
+# Sayt (Next.js) + backend (backend/src, backend/netlify/functions/api.mjs orqali)
+# bitta joyda. Kerakli env: DATABASE_URL, ADMIN_PASSWORD, FRONTEND_URL,
+# VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY. NEXT_PUBLIC_API_BASE_URL bo'sh qoladi
+# (API shu saytning o'zida, /api/*).
+
 [build]
-  command = "npm run build"
+  command = "npm --prefix ../backend ci && npm --prefix ../backend run prisma:deploy && npm run build"
   publish = ".next"
+
+[functions]
+  # Backend funksiyalari backend/ ichida — backend/node_modules shu yerdan topiladi
+  directory = "../backend/netlify/functions"
+  node_bundler = "esbuild"
+  external_node_modules = ["@prisma/client", ".prisma"]
+  included_files = [
+    "../backend/node_modules/.prisma/client/**",
+    "../backend/node_modules/@prisma/client/**",
+  ]
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"

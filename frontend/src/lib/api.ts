@@ -260,7 +260,7 @@ export function cancelCourier(
  * filial alohida stop-listga ega. Auth'siz, ochiq endpoint.
  */
 export async function fetchStopList(cafeId: string): Promise<string[]> {
-  if (!API_BASE_URL || !cafeId) return [];
+  if (!cafeId) return [];
 
   try {
     const res = await fetch(`${API_BASE_URL}/api/stop-list?cafeId=${encodeURIComponent(cafeId)}`);

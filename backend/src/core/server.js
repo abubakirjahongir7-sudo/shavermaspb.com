@@ -93,6 +93,13 @@ export function createServer() {
       return res.status(401).end();
     }
 
+    // Serverless'da (Netlify) uzoq ulanish ushlab turilmaydi. 204 javobi
+    // EventSource'ni qayta ulanmaslikka majbur qiladi — admin panel 5s
+    // polling bilan ishlayveradi.
+    if (process.env.SERVERLESS === "1") {
+      return res.status(204).end();
+    }
+
     res.writeHead(200, {
       "Content-Type": "text/event-stream",
       "Cache-Control": "no-cache",

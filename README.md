@@ -44,7 +44,7 @@ cd frontend && npm test
 
 Ikkala qism ham Dockerfile bilan keladi va hozir Selectel VPS'dagi Dokploy'da
 ishlaydi (har biri `main` branch'ga push qilinganda avtomatik deploy bo'ladi).
-Bepul hostingga (Neon + Render + Netlify) ko'chirish — [DEPLOY-FREE.md](DEPLOY-FREE.md).
+Bepul hostingga (Neon + Netlify) ko'chirish — [DEPLOY-FREE.md](DEPLOY-FREE.md).
 
 Kerakli `.env` o'zgaruvchilari — [backend/README.md](backend/README.md#productionga-deploy)
 va [frontend/README.md](frontend/README.md#productionga-deploy)da.

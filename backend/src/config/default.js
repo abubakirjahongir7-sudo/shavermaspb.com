@@ -11,7 +11,8 @@ function required(name) {
 export const config = {
   databaseUrl: required("DATABASE_URL"),
   // PWA (frontend) manzili — CORS shu manzildan kelgan so'rovlarga ruxsat beradi.
-  frontendUrl: process.env.FRONTEND_URL ?? "",
+  // Netlify o'zi URL o'zgaruvchisini beradi (saytning asosiy manzili).
+  frontendUrl: process.env.FRONTEND_URL || process.env.URL || "",
   // Qo'shimcha ruxsat etilgan manzillar (vergul bilan), masalan domen ko'chguncha
   // Netlify'ning https://<nom>.netlify.app manzili.
   extraCorsOrigins: (process.env.EXTRA_CORS_ORIGINS ?? "")
