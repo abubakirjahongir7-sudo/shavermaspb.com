@@ -1,0 +1,28 @@
+# Render Blueprint — backend (Express API) bepul Render'da.
+# Render kabineti: New -> Blueprint -> shu repo. Qolgan qadamlar: DEPLOY-FREE.md
+services:
+  - type: web
+    name: shaverma-spb-api
+    runtime: docker
+    plan: free
+    region: frankfurt
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      # Neon'dan olingan PostgreSQL manzili (oxirida ?sslmode=require bo'lsin)
+      - key: DATABASE_URL
+        sync: false
+      # Netlify'dagi sayt manzili, masalan https://shavermaspb.com
+      - key: FRONTEND_URL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: VAPID_PUBLIC_KEY
+        sync: false
+      - key: VAPID_PRIVATE_KEY
+        sync: false
+      - key: VAPID_SUBJECT
+        value: https://shavermaspb.com
