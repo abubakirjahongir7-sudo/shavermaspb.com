@@ -18,6 +18,9 @@ services:
       # Netlify'dagi sayt manzili, masalan https://shavermaspb.com
       - key: FRONTEND_URL
         sync: false
+      # Domen ko'chguncha Netlify manzili, masalan https://shavermaspb.netlify.app
+      - key: EXTRA_CORS_ORIGINS
+        sync: false
       - key: ADMIN_PASSWORD
         sync: false
       - key: VAPID_PUBLIC_KEY

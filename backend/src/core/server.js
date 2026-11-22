@@ -27,9 +27,12 @@ import { addSseClient, removeSseClient } from "./sseClients.js";
 
 // Faqat frontend (PWA) domenidan kelgan so'rovlarga ruxsat beriladi.
 // Lokal development uchun localhost'lar ham qo'shib qo'yilgan.
-const ALLOWED_ORIGINS = [config.frontendUrl, "http://localhost:3000", "http://127.0.0.1:3000"].filter(
-  Boolean
-);
+const ALLOWED_ORIGINS = [
+  config.frontendUrl,
+  ...(config.extraCorsOrigins ?? []),
+  "http://localhost:3000",
+  "http://127.0.0.1:3000",
+].filter(Boolean);
 
 const corsOptions = {
   origin(origin, callback) {

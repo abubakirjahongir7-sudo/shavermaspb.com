@@ -12,6 +12,12 @@ export const config = {
   databaseUrl: required("DATABASE_URL"),
   // PWA (frontend) manzili — CORS shu manzildan kelgan so'rovlarga ruxsat beradi.
   frontendUrl: process.env.FRONTEND_URL ?? "",
+  // Qo'shimcha ruxsat etilgan manzillar (vergul bilan), masalan domen ko'chguncha
+  // Netlify'ning https://<nom>.netlify.app manzili.
+  extraCorsOrigins: (process.env.EXTRA_CORS_ORIGINS ?? "")
+    .split(",")
+    .map((s) => s.trim().replace(/\/$/, ""))
+    .filter(Boolean),
   port: Number(process.env.PORT) || 3001,
   adminPassword: process.env.ADMIN_PASSWORD ?? "",
   // Web Push (admin va mijoz PWA'siga telefon uyquda bo'lsa ham bildirishnoma).
